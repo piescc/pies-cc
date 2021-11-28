@@ -1,0 +1,23 @@
+# Import Node.JS
+FROM node
+
+# Create api directory 
+WORKDIR /deployed
+
+# Copy the package information
+COPY package*.json ./
+
+# Install packages
+RUN npm install
+
+# Bundle api source
+COPY . .
+
+# Build the api
+RUN npm run build
+
+# Expose the api port
+EXPOSE 5000
+
+# Run the app
+CMD ["npm", "run start:prod"]
