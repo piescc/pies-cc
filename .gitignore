@@ -14,6 +14,9 @@ lerna-debug.log*
 # OS
 .DS_Store
 
+# Data
+./pies-cc-data
+
 # Env
 *.env
 
