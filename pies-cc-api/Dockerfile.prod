@@ -20,4 +20,4 @@ RUN npm run build
 EXPOSE 5000
 
 # Run the app
-CMD ["npm", "run start:prod"]
+CMD npm run start:prod

@@ -1,10 +1,23 @@
+version: "3"
+
 services:
+  api:
+    build:
+      context: ./pies-cc-api
+      dockerfile: Dockerfile.dev
+    restart: always
+    volumes:
+      - ./pies-cc-api:/deployed
+      - ./.env:/deployed/.env
+      - ${FILE_STORAGE_FOLDER}:/assets
+    ports:
+      - "5000:5000"
   database:
     image: mongo
     restart: always
     environment:
       - MONGO_INITDB_DATABASE=main
-      - MONGO_INITDB_ROOT_USERNAME=mainadmin
+      - MONGO_INITDB_ROOT_USERNAME=mainadmin 
       - MONGO_INITDB_ROOT_PASSWORD=${MONGO_DB_PASSWORD}
     volumes:
       - ${MONGO_DB_FOLDER}:/data/db

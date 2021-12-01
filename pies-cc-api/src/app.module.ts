@@ -6,7 +6,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 @Module({
   imports: [
     AssetsModule, 
-    MongooseModule.forRoot(process.env.MONGO_DB_HOST)
+    MongooseModule.forRoot(`mongodb://mainadmin:${process.env.MONGO_DB_PASSWORD}@database:27017`)
   ],
   controllers: [AppController], 
   providers: [], 

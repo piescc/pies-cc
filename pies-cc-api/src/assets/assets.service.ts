@@ -12,13 +12,14 @@ export class AssetsService {
     constructor(@InjectModel(Asset.name) private assetModel: Model<AssetDocument>) {}
 
     private generateRandomString = (length: number) => crypto.randomBytes(length).toString("hex")
+    private fileStorageFolder = "/assets/" // Make sure to put a / at the end
 
     async createAsset(file: any): Promise<Asset> {
         const originalFileName = file.name
         const fileExtension = path.extname(originalFileName).substr(1, 2^64)
         const id = this.generateRandomString(16)
         const date = Date.now()
-        const assetPath = process.env.FILE_STORAGE_FOLDER + id + "." + fileExtension
+        const assetPath = this.fileStorageFolder + id + "." + fileExtension
 
         //  Write the file
 
