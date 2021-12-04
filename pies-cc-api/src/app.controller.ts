@@ -5,6 +5,6 @@ export class AppController {
 
   @Get()
   getHello(): string {
-    return "<h1>Hello from pies.cc!</h1>"
+    return "<h1>Hello from pies-cc!</h1>"
   }
 }
