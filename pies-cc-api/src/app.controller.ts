@@ -5,7 +5,7 @@ export class AppController {
 
   @Get()
   getHello(@Req() req): string {
-    console.log(req.headers["User-Agent"])
+    console.log(req.headers)
     return "<h1>Hello from pies-cc!</h1>"
   }
 }
