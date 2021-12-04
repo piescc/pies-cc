@@ -16,6 +16,7 @@ lerna-debug.log*
 
 # Data
 pies-cc-data
+Caddyfile
 
 # Env
 *.env

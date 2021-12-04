@@ -1,0 +1,28 @@
+version: "3"
+
+services:
+  api:
+    build:
+      context: ./pies-cc-api
+      dockerfile: Dockerfile.prod
+    restart: unless-stopped
+    volumes:
+      - ./.env:/deployed/.env
+      - ${FILE_STORAGE_FOLDER}:/assets
+  database:
+    image: mongo
+    restart: unless-stopped
+    environment:
+      - MONGO_INITDB_DATABASE=main
+      - MONGO_INITDB_ROOT_USERNAME=mainadmin 
+      - MONGO_INITDB_ROOT_PASSWORD=${MONGO_DB_PASSWORD}
+    volumes:
+      - ${MONGO_DB_FOLDER}:/data/db
+  caddy:
+    image: caddy
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
