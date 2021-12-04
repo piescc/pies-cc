@@ -1,11 +1,13 @@
-import { Controller, Get, Req } from '@nestjs/common';
+import { Controller, Get, Req, Res } from '@nestjs/common';
 
 @Controller()
 export class AppController {
 
   @Get()
-  getHello(@Req() req): string {
-    console.log(req.headers)
-    return "<h1>Hello from pies-cc!</h1>"
+  getHello(@Req() req, @Res() res){
+    if (req.headers["user-agent"].toLowerCase().contains("discord")) {
+
+    }
+    return res.end("<h1>Hello from pies-cc!</h1>")
   }
 }
