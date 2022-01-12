@@ -1,3 +1,5 @@
+**This project is no longer maintained. This was mainly a test of docker and github actions.**
+
 # pies.cc
 
 This repository contains the code for https://pies.cc
